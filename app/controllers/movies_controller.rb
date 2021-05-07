@@ -1,7 +1,20 @@
 class MoviesController < ApplicationController
 
+    def new
+        @movie = Movie.new
+    end
+
+    def create
+        @movie = Movie.new(movie_params)
+        if @movie.save
+            redirect_to @movie
+        else
+            render "new"
+        end
+    end
+
     def index
-        @movies = Movie.all 
+        @movies = Movie.all.order(:title)
     end
 
     def show
@@ -9,4 +22,9 @@ class MoviesController < ApplicationController
         redirect_to movies_path if !@movie
     end
 
+    private
+
+    def movie_params
+        params.require(:movie).permit(:title, :omdb_data)
+    end
 end
