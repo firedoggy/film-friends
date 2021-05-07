@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
+    <head>
     <title>FilmFriends</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <body>
+        <div class="border"></div>
+
+        <div class="header">
+            <h1>Film Friends</h1>
+            <p></p>
+        </div>
+
+        <div class="container">
+            <%= render "layouts/navbar" %>
+        </div>
+
+        <div>
+            <% if flash[:message] %>
+                <%= flash[:message]%>
+            <% end %>
+            <%= @error%>
+        </div>
+
+        <%= yield %>
+
+        <div class="content">
+
+        </div>
+
+        <div class="footer">
+            <h2>Film Friends 2021</h2>
+        </div>
+    </body>
 </html>
