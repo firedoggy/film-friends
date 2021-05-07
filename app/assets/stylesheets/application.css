@@ -13,26 +13,27 @@
  *= require_tree .
  *= require_self
  */
+ 
  body {
     width: 100%;
     min-height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #DADED4;
-    color: #3C403D;
+    background-color: #EFEFEF;
+    color: #1D2341;
 }
 
 
  /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #39603D;
+    background-color: #0B3C5D;
     overflow: hidden;
 }
   
   /* Style the links inside the navigation bar */
 .topnav a {
     float: left;
-    color: #DADED4;
+    color: #EFEFEF;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -41,33 +42,33 @@
   
   /* Change the color of links on hover */
 .topnav a:hover {
-    background-color: #DADED4;
-    color: #3C403D;
+    background-color: #EFEFEF;
+    color: #1D2341;
 }
   
   /* Add a color to the active/current link */
 .topnav a.active {
-    background-color: #DADED4;
-    color: #3C403D;
+    background-color: #EFEFEF;
+    color: #1D2341;
 }
 
 .header {
     padding: 5px;
     text-align: center;
-    background: #39603D;
-    color: #DADED4;
+    background: #0B3C5D;
+    color: #EFEFEF;
     font-size: 30px;
 }
 
 .content {
     min-height:100%; 
-    background-color:green
+    background-color:#0B3C5D
 }
 
 .footer {
     margin-bottom: -50px;
     padding: 5px; /* Some padding */
     text-align: center; /* Center text*/
-    background: #DADED4; /* Grey background */
-    color: #3C403D;
+    background: #EFEFEF; /* Grey background */
+    color: #1D2341;
 }
