@@ -1,6 +1,7 @@
 require 'omdb/api'
 
 class OmdbService
+    require 'pry'
     def initialize()
         api_key = ENV["OMDB_API_KEY"]
 
@@ -9,7 +10,8 @@ class OmdbService
         @client = Omdb::Api::Client.new(api_key: api_key)
     end
 
-    def find_by_title(params)
+    def self.find_by_title(params)
+        binding.pry
         result = @client.find_by_title(params[:title], :type => 'movie')
     end
 end

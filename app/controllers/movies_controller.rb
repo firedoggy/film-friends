@@ -14,7 +14,13 @@ class MoviesController < ApplicationController
     end
 
     def index
-        @movies = Movie.all.order(:title)
+        @movies = Movie.all
+        @movies = @movies.search(params[:search]) if params[:search].present?
+    end
+
+    def search
+        @movies = Movie.search(params[:search])
+        render :index
     end
 
     def show
@@ -25,6 +31,6 @@ class MoviesController < ApplicationController
     private
 
     def movie_params
-        params.require(:movie).permit(:title, :omdb_data)
+        params.require(:movie).permit(:title)
     end
 end

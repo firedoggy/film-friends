@@ -1,1 +1,12 @@
-index
+<h1>Movies</h1>
+
+<%= form_tag movies_path, method: :post do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+  
+<% @movies.each do |movie| %>
+  <%= render partial: 'movie', locals: {movie: movie} %>
+<% end %>
