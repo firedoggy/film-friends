@@ -1,10 +1,8 @@
 <h1>Movies</h1>
 
-<%= form_tag movies_path, method: :post do %>
-  <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil %>
-  </p>
+<%= form_tag(movies_path, method: :get) do %>   
+    <%= text_field_tag :search, nil, placeholder: 'Search by Title' %>
+    <%= submit_tag ("Search")%>        
 <% end %>
   
 <% @movies.each do |movie| %>

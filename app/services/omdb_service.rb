@@ -1,17 +1,12 @@
-require 'omdb/api'
+BASE_URL = "http://www.omdbapi.com/?t="  
+API_PARTIAL_URL = "&apikey=ee7fca41"#{ENV['OMDB_API_KEY']}" 
 
-class OmdbService
-    require 'pry'
-    def initialize()
-        api_key = ENV["OMDB_API_KEY"]
+class OmdbService 
 
-        raise "Missing Omdb api key. Remember to add OMDB_API_KEY to config/application.yml" if api_key.nil?
+    attr_reader :results
 
-        @client = Omdb::Api::Client.new(api_key: api_key)
-    end
-
-    def self.find_by_title(params)
-        binding.pry
-        result = @client.find_by_title(params[:title], :type => 'movie')
+    def self.search(search)
+        @results = HTTParty.get(BASE_URL + "#{search}" + API_PARTIAL_URL)
+        @results
     end
 end

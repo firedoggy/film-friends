@@ -23,7 +23,14 @@ ActiveRecord::Schema.define(version: 2021_05_07_171254) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
-    t.json "omdb_data"
+    t.date "release_date"
+    t.string "genre"
+    t.integer "runtime"
+    t.string "poster"
+    t.string "actors"
+    t.string "plot"
+    t.float "imdbRating"
+    t.string "director"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
