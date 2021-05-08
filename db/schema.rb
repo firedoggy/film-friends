@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 2021_05_07_171254) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
-    t.date "release_date"
+    t.integer "year"
+    t.string "rated"
     t.string "genre"
     t.integer "runtime"
     t.string "poster"

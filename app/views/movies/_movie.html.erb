@@ -1,18 +1,13 @@
-<ul>
-    <li>
-        Title: <%= movie.title %>
-    </li>
-    <li>
-        Director: <%= movie.director %>
-    </li>
-    <li>
-        Year: <%= movie.release_date %>
-    </li>
-    <li>
-        Genre: <%= movie.genre %>
-    </li>
-    <li>
-        Plot: <%= movie.plot %>
-    </li>
-</ul>
+<h1><%= movie.title %> (<%= movie.release_date.to_s %>)<br></h1>
+<h2>
+    Director: <%= movie.director %><br>
+    Genre: <%= movie.genre %><br>
+    Plot: <%= movie.plot %><br>
+    Runtime: <%= movie.runtime %><br>
+    Director: <%= movie.director %><br>
+    Starring: <%= movie.actors %><br>
+    IMDB Rating: <%= movie.imdbRating %><br>
+    IMDB ID: <%= movie.imdb_id %><br>
+    <%= image_tag(movie.poster, style: 'height:25%;width:auto;') %><br>
+</h2>
 
