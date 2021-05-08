@@ -6,10 +6,11 @@ class CreateMovies < ActiveRecord::Migration[6.1]
         t.string "genre"
         t.integer "runtime"
         t.string "poster"
-        t.string "actors"
         t.string "plot"
-        t.float "imdbRating"
         t.string "director"
+        t.string "actors"
+        t.float "imdbRating"
+        t.string "imdb_id"
         t.timestamps
     end
   end

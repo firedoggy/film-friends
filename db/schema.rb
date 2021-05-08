@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(version: 2021_05_07_171254) do
     t.string "genre"
     t.integer "runtime"
     t.string "poster"
-    t.string "actors"
     t.string "plot"
-    t.float "imdbRating"
     t.string "director"
+    t.string "actors"
+    t.float "imdbRating"
+    t.string "imdb_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
