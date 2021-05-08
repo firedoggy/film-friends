@@ -2,7 +2,7 @@
     <a class = <%="active" if current_page?(root_path)%> <%=link_to "Home", root_path %></a>
     <a class = <%="active" if current_page?(movies_path)%><%= link_to "Movies", movies_path %></a>
     <a class = <%="active" if current_page?(root_path)%><%= link_to "Friends", '/' %></a>
-    <a><%= link_to "Search", '/search/index' %></a>
+    <a class = <%="active" if current_page?(root_path)%><%= link_to "Search", search_index_path %></a>
     <% if logged_in?%>
         <a class=<%="active" if current_page?(root_path)%><%= link_to "Profile", '/' %></a>
         <a class=<%="active" if current_page?(root_path)%><%= link_to "Log out", logout_path, method: "delete" %></a>

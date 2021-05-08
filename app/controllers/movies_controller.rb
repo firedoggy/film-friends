@@ -12,28 +12,28 @@ class MoviesController < ApplicationController
     end
 
     def create
-        @movie = Movie.new(movie_params)
+#       @movie = Movie.new(movie_params)
 
-        hash = OmdbService.new
-        escaped_title = URI.escape(@movie.title)
+#        hash = OmdbService.new
+#        escaped_title = URI.escape(@movie.title)
 
-        @movie.title = hash.get_call(escaped_title, "Title")
-        @movie.year = hash.get_call(escaped_title, "Year")
-        @movie.rated = hash.get_call(escaped_title, "Rated")
-        @movie.genre = hash.get_call(escaped_title, "Genre")
-        @movie.runtime = hash.get_call(escaped_title, "Runtime")
-        @movie.poster = hash.get_call(escaped_title, "Poster")
-        @movie.rated = hash.get_call(escaped_title, "Rated")
-        @movie.actors = hash.get_call(escaped_title, "Actors")
-        @movie.plot = hash.get_call(escaped_title, "Plot")
-        @movie.imdbRating = hash.get_call(escaped_title, "imdbRating")
-        @movie.director = hash.get_call(escaped_title, "Director")
+#        @movie.title = hash.get_call(escaped_title, "Title")
+#        @movie.year = hash.get_call(escaped_title, "Year")
+#        @movie.rated = hash.get_call(escaped_title, "Rated")
+#       @movie.genre = hash.get_call(escaped_title, "Genre")
+#        @movie.runtime = hash.get_call(escaped_title, "Runtime")
+#        @movie.poster = hash.get_call(escaped_title, "Poster")
+#        @movie.rated = hash.get_call(escaped_title, "Rated")
+#        @movie.actors = hash.get_call(escaped_title, "Actors")
+#        @movie.plot = hash.get_call(escaped_title, "Plot")
+#        @movie.imdbRating = hash.get_call(escaped_title, "imdbRating")
+#        @movie.director = hash.get_call(escaped_title, "Director")
         
-        if @movie.save
-            redirect_to @movie
-        else
-            render "new"
-        end
+#        if @movie.save
+#            redirect_to @movie
+#        else
+#            render "new"
+#        end
     end
 
     def edit

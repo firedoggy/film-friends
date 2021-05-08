@@ -9,7 +9,6 @@ class Movie < ApplicationRecord
 
 
     def self.find_or_create_from_api(imdb_id)
-        #binding.pry
         query_service = OmdbService.new
         movie = query_service.get_movie_by_id(imdb_id)
         @movie = Movie.find_or_create_by(title: movie["Title"], 

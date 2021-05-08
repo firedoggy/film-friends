@@ -1,13 +1,13 @@
 <h1><%= movie.title %> (<%= movie.year %>)<br></h1>
-<h2>
-    Director: <%= movie.director %><br>
-    Genre: <%= movie.genre %><br>
-    Plot: <%= movie.plot %><br>
-    Runtime: <%= movie.runtime %><br>
-    Director: <%= movie.director %><br>
-    Starring: <%= movie.actors %><br>
-    IMDB Rating: <%= movie.imdbRating %><br>
-    IMDB ID: <%= movie.imdb_id %><br>
-    <%= image_tag(movie.poster, style: 'height:25%;width:auto;') %><br>
-</h2>
+<h3>
+    <% if(movie.director) %>Director: <%= movie.director %><br> <% end %>
+    <% if(movie.rated != "N/A" ) %><%= movie.rated %><br><% end %>
+    <% if(movie.runtime != 0 ) %>Runtime: <%= movie.runtime %><br><% end %>
+    <% if(movie.genre != "N/A" ) %>Genre: <%= movie.genre %><br><% end %> 
+    <% if(movie.plot != "N/A" ) %>Plot: <%= movie.plot %><br><% end %>
+    <% if(movie.actors != "N/A" ) %>Starring: <%= movie.actors %><br><% end %>
+    <% if(movie.imdbRating != "N/A" ) %>IMDB Rating: <%= movie.imdbRating %><br><% end %>
+    <% if(movie.imdb_id != "N/A" ) %>IMDB ID: <%= movie.imdb_id %><br><% end %>
+    <% if(movie.imdb_id != "N/A" ) %><%= image_tag(movie.poster, style: 'height:25%;width:auto;') %><br><% end %>
+</h3>
 

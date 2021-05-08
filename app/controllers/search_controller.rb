@@ -5,7 +5,6 @@ class SearchController < ApplicationController
             query_service = OmdbService.new
             @query = query_service.get_movies_by_title_fragment(params[:search])
             @results = @query["Search"]
-            #binding.pry
             @movies = []
             # If successful, @result will be a hash
             if @result.is_a? String
@@ -14,11 +13,8 @@ class SearchController < ApplicationController
                 @results.each do |r|
                     @movie = Movie.find_or_create_from_api(r["imdbID"])
                     @movies << @movie
-                    #binding.pry
                 end
             end
-        #end
-            #binding.pry
             render "results/index"
         else
             @results = nil

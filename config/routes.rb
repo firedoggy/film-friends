@@ -13,8 +13,12 @@ Rails.application.routes.draw do
 
     resources :search
     resources :reviews
-    resources :movies
-    resources :users
+    resources :movies do
+        resources :reviews, shallow: true
+    end
+    resources :users do
+        resources :reviews, shallow: true
+    end
     resources :friendships
 
 end
