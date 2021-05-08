@@ -1,3 +1,5 @@
 <h1>Movie Info</h1>
 
 <%= render partial: 'movies/movie', locals: {movie: @movie} %>
+
+<p><%= link_to 'Leave a review', new_movie_review_path(@review)%></p>
