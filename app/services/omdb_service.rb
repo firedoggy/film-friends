@@ -5,15 +5,11 @@ class OmdbService
 
     attr_reader :results
 
-    def self.search(search)
-        @results = HTTParty.get(BASE_URL + "#{search}" + API_PARTIAL_URL)
-        @results
-    end
-
     def get_movies_by_title_fragment(str)
         omd_api_key = API_PARTIAL_URL
         request = "http://www.omdbapi.com/?apikey=#{omd_api_key}&s=#{str}"
         result = handle_errors(HTTParty.get("#{request}"))
+        #binding.pry
         return result
     end
     

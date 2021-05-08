@@ -3,7 +3,8 @@
     <%= button_to "Search Again", search_index_path, method: :get %>
 <% elsif @movies %>
     <% @movies.each do |movie| %>
-        <%= link_to movie.title, movie_path(movie) %>
+        
+        <%= link_to movie.title, movie_path(movie.id) %>
     <% end %>
 <% else %>
     <h3>No Matching Movies Found</h3>

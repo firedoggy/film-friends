@@ -18,7 +18,8 @@ class MoviesController < ApplicationController
         escaped_title = URI.escape(@movie.title)
 
         @movie.title = hash.get_call(escaped_title, "Title")
-        @movie.release_date = hash.get_call(escaped_title, "Released")
+        @movie.year = hash.get_call(escaped_title, "Year")
+        @movie.rated = hash.get_call(escaped_title, "Rated")
         @movie.genre = hash.get_call(escaped_title, "Genre")
         @movie.runtime = hash.get_call(escaped_title, "Runtime")
         @movie.poster = hash.get_call(escaped_title, "Poster")
@@ -51,7 +52,7 @@ class MoviesController < ApplicationController
     end
 
     def show
-        @movie = Movie.find(params[:id])
+        @movie = Movie.find_by(id: params[:id])
         #@review = Review.new
         # @reviews = Review.where(movie_id: @movie.id)
         #@reviews = @movie.reviews
@@ -68,13 +69,15 @@ class MoviesController < ApplicationController
 
     def movie_params
         params.require(:movie).permit(:title, 
-        :release_date, 
+        :year, 
+        :rated,
         :genre,
         :runtime,
         :poster,
         :actors,
         :plot,
         :imdbRating,
+        :imdb_id,
         :director)
     end 
 end

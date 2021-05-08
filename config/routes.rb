@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     post '/logout' => 'sessions#destroy'
 
     get 'search/index'
-    resources :search
 
+    resources :search
     resources :reviews
     resources :movies
     resources :users

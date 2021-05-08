@@ -3,23 +3,25 @@ class SearchController < ApplicationController
     def index
         if params[:search]
             query_service = OmdbService.new
-            @result = query_service.get_movies_by_title_fragment(params[:search])
-            @movie_list = @result["Search"]
+            @query = query_service.get_movies_by_title_fragment(params[:search])
+            @results = @query["Search"]
             #binding.pry
             @movies = []
             # If successful, @result will be a hash
             if @result.is_a? String
-                @error_message = error_response(@result.to_i)
-            elsif @movie_list != nil
-                @movie_list.each do |m|
-                    @movie = Movie.find_or_create_from_api(m["imdbID"])
+                @error_message = error_response(@query.to_i)
+            elsif @results != nil
+                @results.each do |r|
+                    @movie = Movie.find_or_create_from_api(r["imdbID"])
                     @movies << @movie
+                    #binding.pry
                 end
             end
         #end
-        render "results/index"
+            #binding.pry
+            render "results/index"
         else
-            @movie_list = nil
+            @results = nil
             @movies = nil
             @selected = nil
         end
