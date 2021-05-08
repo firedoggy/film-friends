@@ -8,4 +8,7 @@ class User < ApplicationRecord
     validates :email, presence: true
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
+    def self.to_s
+        return "#{self.first_name} #{self.last_name}"
+    end
 end
