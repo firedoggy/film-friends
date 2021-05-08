@@ -1,0 +1,11 @@
+<% if @error_message %>
+    <h3><%= @error_message %></h3>
+    <%= button_to "Search Again", search_index_path, method: :get %>
+<% elsif @movie_list %>
+    <% @movie_list.each do |movie| %>
+        <%= link_to movie["Title"], movie_path(movie.id) %>
+    <% end %>
+<% else %>
+    <h3>No Matching Movies Found</h3>
+    < %= button_to "Search Again", search_index_path, method: :get %>
+<% end %>

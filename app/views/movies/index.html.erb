@@ -1,10 +1,5 @@
 <h1>Movies</h1>
 
-<%= form_tag(movies_path, method: :get) do %>   
-    <%= text_field_tag :search, nil, placeholder: 'Search by Title' %>
-    <%= submit_tag ("Search")%>        
-<% end %>
-  
 <% @movies.each do |movie| %>
-  <%= render partial: 'movie', locals: {movie: movie} %>
+    <%= link_to movie.title, movie_path(movie.id) %>
 <% end %>
