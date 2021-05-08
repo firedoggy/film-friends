@@ -1,8 +1,10 @@
 <h1>Review</h1>
 
 <%= form_for(@review) do |f| %>
+
     <%= f.label :content %>
     <%= f.text_area :content %>
 
     <%= f.submit %>
+
 <% end %>
