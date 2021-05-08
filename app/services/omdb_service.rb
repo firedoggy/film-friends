@@ -23,6 +23,13 @@ class OmdbService
         result = handle_errors(HTTParty.get("#{request}"))
         return result
     end
+
+    def get_movie_by_id(id)
+        omd_api_key = API_PARTIAL_URL
+        request = "http://www.omdbapi.com/?apikey=#{omd_api_key}&i=#{id}"
+        result = handle_errors(HTTParty.get("#{request}"))
+        return result
+    end
     
     def handle_errors(response)
         if response.code == 200..299

@@ -8,19 +8,21 @@ class Movie < ApplicationRecord
     scope :ordered_by_title, -> { order(title: :asc) }
 
 
-    def self.find_or_create_from_api(query)
+    def self.find_or_create_from_api(id)
         #binding.pry
-        movie = OmdbService.search(query)
-        
+        query_service = OmdbService.new
+        movie = query_service.get_movie_by_id(id)
         @movie = Movie.find_or_create_by(title: movie["Title"], 
-        runtime: movie["Runtime"], 
+        release_date: movie["Year"],
         genre: movie["Genre"], 
-        release_date: movie["Released"],
+        runtime: movie["Runtime"], 
         poster: movie["Poster"],
-        actors: movie["Actors"],
         plot: movie["Plot"],
+        director: movie["Director"],
+        actors: movie["Actors"],
         imdbRating: movie["imdbRating"],
-        director: movie["Director"]) 
+        imdb_id: movie["imdbID"]
+        ) 
     end
 
 end

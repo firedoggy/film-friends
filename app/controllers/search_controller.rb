@@ -6,19 +6,21 @@ class SearchController < ApplicationController
             @result = query_service.get_movies_by_title_fragment(params[:search])
             @movie_list = @result["Search"]
             #binding.pry
-            @nominated = []
+            @movies = []
             # If successful, @result will be a hash
             if @result.is_a? String
                 @error_message = error_response(@result.to_i)
             elsif @movie_list != nil
-                @movie_list.each do |movie|
-                    movie["Title"]
+                @movie_list.each do |m|
+                    @movie = Movie.find_or_create_from_api(m["imdbID"])
+                    @movies << @movie
                 end
             end
         #end
         render "results/index"
         else
             @movie_list = nil
+            @movies = nil
             @selected = nil
         end
     end
