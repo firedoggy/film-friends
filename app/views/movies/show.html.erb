@@ -2,4 +2,16 @@
 
 <%= render partial: 'movies/movie', locals: {movie: @movie} %>
 
-<p><%= link_to 'Leave a review', new_movie_review_path(@review)%></p>
+<% if logged_in? %>
+    <p><%= link_to 'Leave a review', new_movie_review_path(@movie)%></p>
+<% else %>
+    <p><%= link_to 'Login to leave a review', login_path%></p>
+<% end %>    
+
+<% if !@movie.reviews.empty? %>
+    <p><%= link_to "See all reviews.", movie_reviews_path(@movie) %></p>
+    <h4>Most Recent Reviews:</h4>
+    <% @movie.reviews.order(updated_at: :desc).limit(3).each do |r| %>
+        <%= r.user.to_s %> says "<%= link_to r.content, movie_reviews_path(@movie, r) %>" %>
+    <% end %>
+<% end %>    

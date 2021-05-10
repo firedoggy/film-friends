@@ -1,14 +1,20 @@
 class ReviewsController < ApplicationController
     
     def index
-        @reviews = Review.all
+        if params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
+            @reviews = @movie.reviews
+        else
+            @error = "That movie does not exist." if params[:movie_id]
+            @reviews = Review.all
+        end
     end
 
     def show
-        @review = Review.find_by(id: params[:id])
+        #@review = Review.find_by(id: params[:id])
     end
 
     def new
+        #binding.pry
         if params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
             @review = @movie.reviews.build
         else
@@ -20,7 +26,7 @@ class ReviewsController < ApplicationController
     def create
         @review = current_user.reviews.build(review_params)
         if @review.save
-            redirect_to reviews_path
+            redirect_to review_path(@review)
         else
             render :new
         end
