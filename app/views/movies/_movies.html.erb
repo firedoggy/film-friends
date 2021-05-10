@@ -1,0 +1,4 @@
+<% require 'pry'; binding.pry %>
+<% @movies.each do |movie| %>
+    <h3><%= link_to movie.title, movie_path(movie.id) %> (<%= movie.year %>)</h3>
+<% end %>

@@ -1,3 +1,10 @@
 <h1>Welcome <%= current_user.to_s %></h1>
 
-<%=  %>
+<h2>Reviewed Movies:</h2>
+<% if @user.movies.empty? %>
+    <h2> You haven't reviewed any movies yet, create one <%= link_to "here", new_movie_path%> now!</h2>
+<% else %>
+    <% @user.movies.each do |movie| %>
+        <h3><%= link_to movie.title, movie_path(movie.id) %> (<%= movie.year %>)</h3>
+    <% end %>
+<% end %>

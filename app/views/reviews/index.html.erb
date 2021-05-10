@@ -1,9 +1,11 @@
 <% if @movie %>
     <h1>Reviews for <%= @movie.title%></h1>
 <% else %>
-  <h1>All Reviews</h1>
+    <h1>All Reviews</h1>
 <% end %>
 
 <% @reviews.each do |r|%>
     <%= r.user.to_s %> says "<%= link_to r.content, movie_review_path(@movie, r) %>" %>
 <% end %>
+
+<h4><%= link_to 'Back', movie_path(@movie), class: "btn btn-info"  %></h4>
