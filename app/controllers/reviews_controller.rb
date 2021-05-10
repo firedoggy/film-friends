@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-    before_action :redirect_if_not_review_author, only: [:edit, :update]
+    before_action :redirect_if_not_review_author, only: [:edit, :update, :destroy]
     
     def index
         if params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
@@ -36,7 +36,8 @@ class ReviewsController < ApplicationController
     end
 
     def edit
-        
+        @review = Review.find_by(id: params[:id])
+        redirect_to movie_reviews_path(@review.movie.id) if !@review || @review.user != current_user
     end
 
     def update

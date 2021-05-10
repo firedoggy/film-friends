@@ -1,5 +1,7 @@
 <h1>Login</h1>
 
+<%= flash[:message]  if flash[:message]%>
+
 <%= form_for :user do |f| %>
     <%= f.label :email %>
     <%= f.email_field :email %>
@@ -14,3 +16,5 @@
     <%= f.submit "Login" %>
     
 <% end %>
+Or
+<br><%= button_to "Log in with Google", '/auth/google_oauth2'  %>

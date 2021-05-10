@@ -5,7 +5,7 @@
 <%= form_for(@review) do |f|%>
     <% if !@review.movie %>
         <%= f.label :movie %>
-        <%= f.collection_select :movie_id, Movie.all, :id, :title %>
+        <%= f.collection_select :movie_id, Movie.alpha, :id, :title %>
     <% else %>
         <%= f.hidden_field :movie_id %>
     <% end %>

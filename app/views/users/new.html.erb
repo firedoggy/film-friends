@@ -1,5 +1,7 @@
 <h1>Sign Up</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @user} %>
+
 <%= form_for(@user, url:'/signup') do |f| %>
     <%= f.label :email %>
     <%= f.email_field :email, required: true %>
@@ -23,3 +25,5 @@
         <br>
     <%= f.submit "Submit" %>
 <% end %>
+Or
+<br><%= button_to "Log in with Google", '/auth/google_oauth2'  %>

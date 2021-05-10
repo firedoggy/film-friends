@@ -12,6 +12,10 @@ class User < ApplicationRecord
         return self.first_name + " " + self.last_name
     end
 
+    def self.most_active
+        joins(:reviews).group(:user_id).order("count(user_id) DESC").limit(3)
+    end
+
     def self.from_omniauth(response)
         User.find_or_create_by(uid: response[:uid], provider: response[:provider]) do |u|
             u.first_name = response[:info][:first_name]
@@ -20,5 +24,5 @@ class User < ApplicationRecord
             u.password = SecureRandom.hex(15)
         end
     end
-    
+
 end

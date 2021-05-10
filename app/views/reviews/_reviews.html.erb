@@ -1,0 +1,6 @@
+<% reviews.each do |review| %>
+    <b><%= link_to review.user.to_s, user_path(review.user) %></b> says <i>"<%= review.content %>"</i> at <%= review.updated_at.strftime("%I:%M %p on %m/%d/%Y") %>
+    <% if review.user == current_user %>
+        <%= link_to "Edit", edit_review_path(review.id) %>   <%= link_to "Delete", review, method: :delete, data: { confirm: "Really?" } %><br>
+    <% end %>
+<% end %>

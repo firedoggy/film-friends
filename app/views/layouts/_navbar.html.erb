@@ -10,7 +10,6 @@
     <% else %>
         <a class = <%="active" if current_page?(signup_path)%> <%= link_to "Sign Up", signup_path %></a>
         <a class = <%="active" if current_page?(login_path)%> <%= link_to "Log In", login_path %></a>
-        <%= link_to "Log In With Google", '/auth/google_oauth2' %>
     <% end %>
     
 </div>

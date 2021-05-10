@@ -15,6 +15,7 @@ class SearchController < ApplicationController
                     @movies << @movie
                 end
             end
+            
             render "results/index"
         else
             @results = nil

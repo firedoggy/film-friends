@@ -4,12 +4,12 @@
     <h1>All Reviews</h1>
 <% end %>
 
-<% @reviews.each do |r|%>
-    <p><%= link_to r.user.to_s, user_path(r.user) %> says "<%= r.content %>" at <%= r.updated_at.strftime("%I:%M %p on %m/%d/%Y") %></p>
-<% end %>
+<%= render partial: 'reviews/reviews', locals: {reviews: @reviews.order(updated_at: :desc)} %>
 
 <% if logged_in? %>
-    <p><%= link_to 'Leave a review', new_movie_review_path(@reviews[0].movie_id)%></p>
+    <p><%= link_to 'Leave a review', new_movie_review_path(@movie.id)%></p>
 <% end %>
 
-<h4><%= link_to 'Back', movie_path(@reviews[0].movie_id), class: "btn btn-info"  %></h4>
+<% if @movie %>
+    <h4><%= link_to 'Back', movie_path(@movie.id), class: "btn btn-info"  %></h4>
+<% end %>

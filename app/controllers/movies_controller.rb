@@ -1,8 +1,7 @@
 class MoviesController < ApplicationController
 
     def index
-        #binding.pry
-        @movies = Movie.all.alpha
+        @movies = Movie.alpha
     end
 
     def show
