@@ -60,3 +60,4 @@ gem "hashid-rails", "~> 1.0"
 gem "dotenv", "~> 2.7"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'

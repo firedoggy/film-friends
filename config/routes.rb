@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     post '/login' => 'sessions#create'
     delete '/logout' => 'sessions#destroy'
 
+    get '/auth/:provider/callback' => 'sessions#google'
+
     get 'search/index'
 
     resources :search

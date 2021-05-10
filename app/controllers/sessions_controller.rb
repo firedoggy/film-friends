@@ -19,4 +19,20 @@ class SessionsController < ApplicationController
         redirect_to root_path
     end
     
+    def google
+       user = User.from_omniauth(auth)
+       if user.valid?
+            log_in(user)
+            redirect_to user_path(user)
+       else
+            redirect_to '/login'
+       end
+    end
+
+    private
+
+    def auth
+        request.env['omniauth.auth']
+    end
+
 end

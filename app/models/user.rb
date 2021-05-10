@@ -11,4 +11,14 @@ class User < ApplicationRecord
     def to_s
         return self.first_name + " " + self.last_name
     end
+
+    def self.from_omniauth(response)
+        User.find_or_create_by(uid: response[:uid], provider: response[:provider]) do |u|
+            u.first_name = response[:info][:first_name]
+            u.last_name = response[:info][:last_name]
+            u.email = response[:info][:email]
+            u.password = SecureRandom.hex(15)
+        end
+    end
+    
 end

@@ -1,6 +1,8 @@
 require_relative "boot"
 
 require "rails/all"
+require 'dotenv'
+Dotenv.load
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -10,6 +12,7 @@ module FilmFriends
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+
 
     # Configuration for the application, engines, and railties goes here.
     #
