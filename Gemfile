@@ -58,3 +58,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'omdb-api'
 gem "hashid-rails", "~> 1.0"
 gem "dotenv", "~> 2.7"
+gem 'omniauth'
+gem 'omniauth-google-oauth2'

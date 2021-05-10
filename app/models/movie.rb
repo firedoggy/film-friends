@@ -2,10 +2,11 @@ class Movie < ApplicationRecord
     include Hashid::Rails
 
     has_many :reviews
-    has_many :users, through: :reviews
+    has_many :users, -> { distinct }, through: :reviews
 
     validates :title, presence: true, length: { minimum: 1 }
-    scope :ordered_by_title, -> { order(title: :asc) }
+    validates :imdb_id, uniqueness: true
+    scope :alpha, -> { order(:title) }
 
 
     def self.find_or_create_from_api(imdb_id)

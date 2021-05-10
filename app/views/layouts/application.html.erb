@@ -22,17 +22,19 @@
             <%= render "layouts/navbar" %>
         </div>
 
-        <div>
-            <% if flash[:message] %>
-                <%= flash[:message]%>
-            <% end %>
-            <%= @error%>
-        </div>
+        <div class="container">
+            <div>
+                <% if flash[:message] %>
+                    <%= flash[:message]%>
+                <% end %>
+                <%= @error%>
+            </div>
 
-        <%= yield %>
+            <%= yield %>
 
-        <div class="content">
+            <div class="content">
 
+            </div>
         </div>
 
         <div class="footer">

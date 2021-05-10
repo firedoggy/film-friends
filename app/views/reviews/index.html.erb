@@ -5,7 +5,11 @@
 <% end %>
 
 <% @reviews.each do |r|%>
-    <%= r.user.to_s %> says "<%= link_to r.content, movie_review_path(@movie, r) %>" %>
+    <p><%= link_to r.user.to_s, user_path(r.user) %> says "<%= r.content %>" at <%= r.updated_at.strftime("%I:%M %p on %m/%d/%Y") %></p>
 <% end %>
 
-<h4><%= link_to 'Back', movie_path(@movie), class: "btn btn-info"  %></h4>
+<% if logged_in? %>
+    <p><%= link_to 'Leave a review', new_movie_review_path(@reviews[0].movie_id)%></p>
+<% end %>
+
+<h4><%= link_to 'Back', movie_path(@reviews[0].movie_id), class: "btn btn-info"  %></h4>

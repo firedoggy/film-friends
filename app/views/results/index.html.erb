@@ -3,10 +3,9 @@
         <h3><%= @error_message %></h3>
         <%= button_to "Search Again", search_index_path, method: :get %>
     <% elsif @movies %>
-        <% @movies.each do |movie| %>
-            
-            <%= link_to movie.title, movie_path(movie.id) %> (<%= movie.year %>)<br>
-        <% end %>
+        <div class = "grid">
+            <%= render partial: "movies/movies", locals: {movies: @movies} %>
+        </div>
     <% else %>
         <h3>No Matching Movies Found</h3>
         < %= button_to "Search Again", search_index_path, method: :get %>

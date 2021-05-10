@@ -1,0 +1,5 @@
+<h2><%= @review.content%> - <%= link_to @review.user.to_s, user_path(@review.user) %></h2>
+
+<% if @review.user == current_user %>
+  <%= link_to "Edit Review", edit_review_path(@review)%>
+<% end %>

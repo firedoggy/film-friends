@@ -1,16 +1,19 @@
 class ReviewsController < ApplicationController
+
+    before_action :redirect_if_not_review_author, only: [:edit, :update]
     
     def index
         if params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
-            @reviews = @movie.reviews
+            @reviews = @movie.reviews.order("created_at DESC")
         else
             @error = "That movie does not exist." if params[:movie_id]
-            @reviews = Review.all
+            @reviews = Review.all.order("created_at DESC")
         end
     end
 
     def show
-        #@review = Review.find_by(id: params[:id])
+        @review = Review.find_by(id: params[:id])
+        redirect_to reviews_path if !@review
     end
 
     def new
@@ -26,10 +29,14 @@ class ReviewsController < ApplicationController
     def create
         @review = current_user.reviews.build(review_params)
         if @review.save
-            redirect_to review_path(@review)
+            redirect_to movie_reviews_path(@review.movie.id)
         else
             render :new
         end
+    end
+
+    def edit
+        
     end
 
     def update
@@ -40,10 +47,20 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def destroy 
+        @review = Review.find_by(id: params[:id])
+        @review.destroy
+        redirect_to movie_url
+    end
+
     private
 
     def review_params()
         params.require(:review).permit(:content, :movie_id)
+    end
+
+    def redirect_if_not_review_author
+        redirect_to reviews_path if @review.user != current_user
     end
 
 end
