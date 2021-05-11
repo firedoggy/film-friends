@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create!(email: 'foo@bar.com',
-            first_name: 'foo',
-            last_name: 'bar',
+            first_name: 'Foo',
+            last_name: 'Bar',
             password_digest: BCrypt::Password.create('password'))
+Movie.find_or_create_from_api("tt0110912")
+Review.create(content: "This movie is the best!", movie_id: 75, user_id: 4)
