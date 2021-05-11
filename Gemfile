@@ -61,3 +61,4 @@ gem "dotenv", "~> 2.7"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+gem 'will_paginate', '~> 3.1.0'

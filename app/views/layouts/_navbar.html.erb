@@ -1,7 +1,7 @@
 <div class="topnav">
 
     <a class = <%="active" if current_page?(root_path)%> <%= link_to "Home", root_path %></a>
-    <a class = <%="active" if current_page?(movies_path)%><%= link_to "Movies", movies_path %></a>
+    <a class = <%="active" if current_page?(movies_path)%><%= link_to "Reviews", movies_path %></a>
     <a class = <%="active" if current_page?(root_path)%><%= link_to "Friends", '/' %></a>
     <a class = <%="active" if current_page?(search_index_path)%><%= link_to "Search Movies", search_index_path %></a>
     <% if logged_in?%>

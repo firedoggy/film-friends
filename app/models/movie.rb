@@ -9,6 +9,10 @@ class Movie < ApplicationRecord
     scope :alpha, -> { order(:title) }
 
 
+    def self.reviewed_movies 
+        return Movie.all.joins(:reviews).alpha
+    end
+
     def self.find_or_create_from_api(imdb_id)
         query_service = OmdbService.new
         movie = query_service.get_movie_by_id(imdb_id)

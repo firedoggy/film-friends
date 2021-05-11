@@ -16,12 +16,12 @@ Rails.application.routes.draw do
     resources :search
     resources :reviews
     resources :movies, only: [:index, :show] do
-        resources :reviews#, shallow: true
+        resources :reviews, shallow: true
     end
     resources :users do
         resources :reviews, shallow: true
     end
-    resources :friendships
+    #resources :friendships
 
     get "*path", to: redirect('/')
 end
