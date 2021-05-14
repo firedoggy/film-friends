@@ -6,4 +6,5 @@ class Review < ApplicationRecord
     validates :content, presence: true
 
     validates :movie, uniqueness: {scope: :user_id, message: "may only have one review per user"}
+    
 end

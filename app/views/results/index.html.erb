@@ -3,12 +3,12 @@
     <% if @error_message %>
         <h3><%= @error_message %></h3>
         <%= button_to "Search Again", search_index_path, method: :get %>
-    <% elsif @movies %>
+    <% elsif !@movies.empty? %>
         <div class = "grid">
             <%= render partial: "movies/movies", locals: {movies: @movies} %>
         </div>
     <% else %>
         <h3>No Matching Movies Found</h3>
-        < %= button_to "Search Again", search_index_path, method: :get %>
+        <%= link_to "Search Again", search_index_path, method: :get %>
     <% end %>
 </h3>
