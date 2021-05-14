@@ -20,7 +20,6 @@ class SearchController < ApplicationController
         else
             @results = nil
             @movies = nil
-            @selected = nil
         end
     end
 

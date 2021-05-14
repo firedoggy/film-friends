@@ -1,5 +1,7 @@
 <% @movies.each do |movie| %>
-    <% if movie.poster.nil? || movie.poster == "N/A" %>
+    <% if movie.id.nil? %>
+        
+    <% elsif movie.poster.nil? || movie.poster == "N/A"  %>
         <%= link_to movie.title, movie_path(movie.id) %>
     <% else %>
         <%= link_to image_tag(movie.poster), movie_path(movie.id) %>

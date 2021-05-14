@@ -4,9 +4,12 @@ class User < ApplicationRecord
     has_many :friends, through: :friendships
     has_many :reviews
     has_many :movies, -> { distinct }, through: :reviews
-    has_secure_password
+    
     validates :email, presence: true
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    has_secure_password
 
     def to_s
         return self.first_name + " " + self.last_name
