@@ -7,6 +7,6 @@
     <% if(movie.plot != "N/A" ) %><b>Plot:</b> <%= movie.plot %><br><% end %>
     <% if(movie.actors != "N/A" ) %><b>Starring:</b> <%= movie.actors %><br><% end %>
     <% if(movie.imdbRating != "N/A" ) %><b>IMDB Rating:</b> <%= movie.imdbRating %><br><% end %>
-    <% if(movie.imdb_id != "N/A" ) %><%= image_tag(movie.poster, style: 'height:25%;width:auto;') %><br><% end %>
+    <% if(movie.poster != "N/A" ) %><%= image_tag(movie.poster, style: 'height:25%;width:auto;') %><br><% end %>
 </p>
 

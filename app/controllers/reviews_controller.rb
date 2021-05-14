@@ -51,8 +51,9 @@ class ReviewsController < ApplicationController
 
     def destroy 
         @review = Review.find_by(id: params[:id])
+        movie = @review.movie.id
         @review.destroy
-        redirect_to movie_url
+        redirect_to movie_path(movie)
     end
 
     private

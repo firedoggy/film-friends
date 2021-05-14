@@ -1,5 +1,5 @@
 BASE_URL = "http://www.omdbapi.com/?t="  
-API_PARTIAL_URL = "ee7fca41"#{ENV['OMDB_API_KEY']}" 
+API_PARTIAL_URL = "#{ENV['OMDB_API_KEY']}" 
 
 class OmdbService 
 
