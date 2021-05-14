@@ -15,10 +15,10 @@ class UsersController < ApplicationController
     end
 
     def show
-        redirect_if_not_logged_in
+        #redirect_if_not_logged_in
         @user = User.find_by_id(params[:id])
         if @user
-            @reviews = Review.select { |r| r.user_id == @user.id }
+            @reviews = Review.by_user(@user)
         else
             redirect_to '/'
         end

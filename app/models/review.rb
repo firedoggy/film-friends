@@ -7,4 +7,7 @@ class Review < ApplicationRecord
 
     validates :movie, uniqueness: {scope: :user_id, message: "may only have one review per user"}
     
+    def self.by_user(user_id)
+        where(user: user_id)
+    end
 end

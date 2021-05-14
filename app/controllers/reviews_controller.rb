@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
 
+    before_action :redirect_if_not_logged_in, only: [:new, :create, :edit]
     before_action :redirect_if_not_review_author, only: [:edit, :update, :destroy]
     
     def index
@@ -64,6 +65,11 @@ class ReviewsController < ApplicationController
 
     def redirect_if_not_review_author
         redirect_to reviews_path if Review.find_by_id(params[:id]).user != current_user
+    end
+
+    def require_login
+        
+        return head(:forbidden) unless session.include? :user_id
     end
 
 end
